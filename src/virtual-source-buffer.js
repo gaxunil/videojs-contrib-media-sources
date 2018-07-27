@@ -668,7 +668,8 @@ export default class VirtualSourceBuffer extends videojs.EventTarget {
     }
 
     if (this.appendAudioInitSegment_) {
-      if (!this.audioDisabled_ && this.audioBuffer_) {
+      // add a check for sortedSegments.audio.initSegment
+      if (!this.audioDisabled_ && this.audioBuffer_ && sortedSegments.audio.initSegment) {
         sortedSegments.audio.segments.unshift(sortedSegments.audio.initSegment);
         sortedSegments.audio.bytes += sortedSegments.audio.initSegment.byteLength;
       }
